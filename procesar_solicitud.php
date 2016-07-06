@@ -21,17 +21,14 @@ if (stristr($_SERVER['PHP_SELF'],'clase_db.inc.php')) {	//  evita que el script 
     }
 
     $conn=new MySQL();
-//
-//    echo "select  a.nombres, a.apellidos, b.descripcion,a.cod_dep "
-//           . "from usuarios as a, departamentos as b where a.login='".$login."' and a.cod_dep=b.id_departamento";exit();
 
-   $query=$conn->consulta("select  a.nombres, a.apellidos, b.descripcion,a.cod_dep "
-           . "from usuarios as a, departamentos as b where a.login='".$login."' and a.cod_dep=b.id_departamento");
+
+   $query=$conn->consulta("select  a.id, a.nombres, a.apellidos, b.descripcion,a.cod_dep from usuarios as a, departamentos as b where a.login='".$login."' and a.cod_dep=b.id_departamento");
    $query1=$conn->fetch_array($query);
-   //echo "insert into solicitudes(tipo_solicitud,departamento,usuario,fecha,estatus)values  ('".$solicitud."','".$query1['cod_dep']."','".$query1['nombres']." ".$query1['apellidos']."',now(),'".$estatus."')";exit();
+
    for ($i=0;$i<count($solicitud);$i++)
 {
-   $inser=$conn->consulta("insert into solicitudes(tipo_solicitud,departamento,usuario,fecha,estatus)values  ('".$solicitud[$i]."','".$query1['cod_dep']."','".$query1['nombres']." ".$query1['apellidos']."',NOW(),'".$estatus."')");
+   $inser=$conn->consulta("insert into solicitudes(tipo_solicitud,departamento,usuario,fecha,estatus, id_usuario)values  ('".$solicitud[$i]."','".$query1['cod_dep']."','".$query1['nombres']." ".$query1['apellidos']."',NOW(),'".$estatus."', $query1['id'])");
 }
 if($inser){
      echo "<script type='text/javascript'>"

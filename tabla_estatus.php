@@ -6,7 +6,7 @@ valor=valor1;
 }
 
 function modificar(valor2){
-    window.location.href = "asignar_persona.php?resp_asig='"+valor+"'&id_solicitud='"+valor2+"'";
+    window.location.href = "asignar_persona.php?resp_asig="+valor+"&id_solicitud="+valor2+"";
 }
 </script>
 <div class="datagrid"><table>

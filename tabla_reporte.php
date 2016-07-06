@@ -9,8 +9,104 @@ function modificar(valor2){
     window.location.href = "asignar_persona.php?resp_asig='"+valor+"'&id_solicitud='"+valor2+"'";
 }
 </script>
-<div class="datagrid"><table>
+<?php
+if(!isset($_GET['departamento']))
+{$_GET['departamento']='x999';}
+
+if(!isset($_GET['soporte']))
+{$_GET['soporte']='x999';}
+
+if(!isset($_GET['estatus']))
+{$_GET['estatus']='x999';}
+
+if(!isset($_GET['usuario']))
+{$_GET['usuario']='x999';}
+
+if(!isset($_GET['analista']))
+{$_GET['analista']='x999';}
+
+$filtros=new MySQL();
+
+$sql="SELECT * FROM departamentos";
+$departamentos=$filtros->consulta($sql);
+
+$sql="SELECT * FROM descripcion_solicitud";
+$soporte=$filtros->consulta($sql);
+
+$sql="SELECT * FROM estatus";
+$estatus=$filtros->consulta($sql);
+
+$sql="SELECT * FROM usuarios";
+$usuarios=$filtros->consulta($sql);
+
+$sql="SELECT * FROM usuarios WHERE cod_dep=2 or cod_dep=0";
+$analistas=$filtros->consulta($sql);
+?>
+<form action='reportes.php' method='GET'>
+<div>
+    <table bgcolor="#006699">
+
+        <tr><th>Departamento</th><th>Tipo de Soporte</th><th>Estatus</th><th>Solicitante</th><th>Asignado</th><td rowspan="2" valign="middle" style="vertical-align:middle"><center><input type="submit" name="Filtrar" value="Filtrar"></center></td></tr>
+        <tr>
+        <th><select name="departamento">
+        <option value='x999'>Todos</option>
+        <?php
+        while($fila=$filtros->fetch_array($departamentos)){
+            ?>
+            <option value=<?php echo $fila['id_departamento']; ?>><?php echo $fila['descripcion']; ?></option>
+            <?php
+        }
+        ?>
+        </select></th>
+        <th><select name="soporte">
+        <option value='x999'>Todos</option>
+        <?php
+        while($fila=$filtros->fetch_array($soporte)){
+            ?>
+            <option value=<?php echo $fila['tipo_solicitud']; ?>><?php echo $fila['descripcion_solicitud']; ?></option>
+            <?php
+        }
+        ?>
+        </select></th>
+        <th><select name="estatus">
+        <option value='x999'>Todos</option>
+        <?php
+        while($fila=$filtros->fetch_array($estatus)){
+            ?>
+            <option value=<?php echo $fila['id_estatus']; ?>><?php echo $fila['descripcion_estatus']; ?></option>
+            <?php
+        }
+        ?>
+        </select></th>
+        <th><select name="usuario">
+        <option value='x999'>Todos</option>
+        <?php
+        while($fila=$filtros->fetch_array($usuarios)){
+            ?>
+            <option value=<?php echo $fila['id']; ?>><?php echo $fila['nombres']." ".$fila['apellidos']; ?></option>
+            <?php
+        }
+        ?>
+        </select></th>
+        <th><select name="analista">
+        <option value='x999'>Todos</option>
+        <?php
+        while($fila=$filtros->fetch_array($analistas)){
+            ?>
+            <option value=<?php echo $fila['id']; ?>><?php echo $fila['nombres']." ".$fila['apellidos']; ?></option>
+            <?php
+        }
+        ?>
+        </select></th>
+    </table>
+</div>
+</form>
+<br>
+<div class="datagrid">
+<table>
+
 <thead>
+
    <?php
    if($_SESSION['departamento']>5){
    ?>
@@ -39,12 +135,41 @@ function modificar(valor2){
 <tbody>
 <?php
 $estatus=new MySQL();//"select * from solicitudes as a, departamentos as b, usuarios as c,descripcion_solicitud as d where a.tipo_solicitud=d.tipo_solicitud and a.departamento=b.id_departamento "
-$consulta=$estatus->consulta("select a.id,b.descripcion, d.descripcion_solicitud, a.estatus, a.usuario, a.asignar_usuario
+$sql2="select a.id,b.descripcion, d.descripcion_solicitud, a.estatus, a.usuario, a.asignar_usuario
 from solicitudes as a,
 departamentos as b,
+estatus as c,
 descripcion_solicitud as d
 where a.tipo_solicitud=d.tipo_solicitud
-and a.departamento=b.id_departamento");
+and a.departamento=b.id_departamento
+and a.estatus=c.id_estatus";
+
+if($_GET['departamento']!='x999')
+{
+    $sql2.=" and a.departamento=".$_GET['departamento']."";
+}
+
+if($_GET['soporte']!='x999')
+{
+    $sql2.=" and a.tipo_solicitud=".$_GET['soporte']."";
+}
+
+if($_GET['estatus']!='x999')
+{
+    $sql2.=" and c.id_estatus=".$_GET['estatus']."";
+}
+
+if($_GET['usuario']!='x999')
+{
+    $sql2.=" and a.id_usuario=".$_GET['usuario']."";
+}
+
+if($_GET['analista']!='x999')
+{
+    $sql2.=" and a.asignar_usuario=".$_GET['analista']."";
+}
+
+$consulta=$estatus->consulta($sql2);
 
 $contar=0;
 if($_SESSION['departamento']>5){
@@ -119,7 +244,7 @@ if($fila['asignar_usuario']==0){
                     </tr>
                  ";
 
-$contar++;} echo "</form>";
+$contar++;}
 
 
 

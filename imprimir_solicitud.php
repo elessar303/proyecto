@@ -10,6 +10,8 @@ $empleado=utf8_encode($fila['usuario']);
 $solicitud=utf8_encode($fila['descripcion_solicitud']);
 $nombre=utf8_encode($fila['nombres']);
 $apellido=utf8_encode($fila['apellidos']);
+$direccion=utf8_encode($fila['direccion']);
+$tlfn=utf8_encode($fila['telefono']);
 }
 $fecha=date("d-m-Y");
 $html='
@@ -37,7 +39,7 @@ $html='
 <table width=100% cellspacing=15>
 <tr>
 <td width=20%>Fecha: '.$fecha.'</td>
-<td width=80%>Gerencia/Empleado: '.$gerencia.'/'.$empleado.'<br> Direccion: <br> Telefono: </td>
+<td width=80%>Gerencia/Empleado: '.$gerencia.'/'.$empleado.'<br> Direccion: '.$direccion.'<br> Telefono: '.$tlfn.'</td>
 </tr>
 </table>
 
