@@ -73,6 +73,7 @@ function validacion() {
                    <?php  // Consultar la base de datos
                    $conn=new MySQL();
                     $consulta_mysql=$conn->consulta('select * from departamentos');
+                    $consulta_mysql2=$conn->consulta('select * from tipo_usuario');
 
 
 
@@ -112,11 +113,24 @@ function validacion() {
                 </div>
                        <div class="large">
                            <h4><input name="clave"  type="password" id="clave" placeholder="CLAVE"  title='COLOQUE CLAVE' style=" display: inline-block; text-align: center; width: 190px;"/></h4>
-                </div>
+                      </div>
                        <div class="large">
                             <h4><input name="reclave" type="password" id="reclave" placeholder="REPITA CLAVE"  title='REPITA CLAVE' style="display: inline-block; text-align:center; width: 190px;"/></h4>
+                      </div>
+
+                      <div class="large">
+                      <?php
+                      echo "<select  size='1' name='tipo_usuario' id='tipo_usuario' style='width:195px' title='SELECCIONE DEPARTAMENTO'> <option value='0'>Seleccione...</option>";
+                    while($fila=$resultado_consulta_mysql=$conn->fetch_array($consulta_mysql2)){
+                        echo "<option value='".$fila['id']."'>".$fila['tipo_usuario']."</option>";
+                    }
+                    echo "</select>";
+                      ?>
+                      </div>
                 </div>
-                   </div></div>
+
+
+              </div>
 
     <div class="submit"><input type="submit" value="Enviar"/></div></form>
 <p class="frmd"></p>

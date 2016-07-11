@@ -6,7 +6,7 @@ valor=valor1;
 }
 
 function modificar(valor2){
-    window.location.href = "add_user.php?usuario="+valor2; 
+    window.location.href = "add_user2.php?usuario="+valor2; 
 }
 </script>
 <div class="datagrid"><table>

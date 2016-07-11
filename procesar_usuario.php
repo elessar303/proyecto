@@ -25,8 +25,10 @@ if (stristr($_SERVER['PHP_SELF'],'clase_db.inc.php')) {	//  evita que el script 
    //echo "insert into solicitudes(tipo_solicitud,departamento,usuario,fecha,estatus)values  ('".$solicitud."','".$query1['cod_dep']."','".$query1['nombres']." ".$query1['apellidos']."',now(),'".$estatus."')";exit();
   // echo "insert into usuarios(login,nombres,apellidos,cedula,cod_dep,clave)values "
       //     . " ('".$_POST['login']."','".$_POST['nombre']."','".$_POST['apellido']." ".$_POST['cedula']."','".$_POST['departamento']."','".md5($_POST['clave'])."')";
-    $inser=$conn->consulta("insert into usuarios(login,nombres,apellidos,cedula,cod_dep,clave, telefono, direccion)values "
-           . " ('".$_POST['login']."','".$_POST['nombre']."','".$_POST['apellido']."', '".$_POST['cedula']."','".$_POST['departamento']."','".md5($_POST['clave'])."', '".$_POST['tlfn']."', '".$_POST['direccion']."')");
+    $sql="insert into usuarios(login,nombres,apellidos,cedula,cod_dep,clave, telefono, direccion, id_tipo) values "
+           . " ('".$_POST['login']."','".$_POST['nombre']."','".$_POST['apellido']."', '".$_POST['cedula']."','".$_POST['departamento']."','".md5($_POST['clave'])."', '".$_POST['tlfn']."', '".$_POST['direccion']."', ".$_POST['tipo_usuario'].")";
+    //echo $sql; 
+    $inser=$conn->consulta($sql);
 
 if($inser){
      echo "<script type='text/javascript'>"

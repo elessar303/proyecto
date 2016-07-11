@@ -2,10 +2,10 @@
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 06, 2016 at 12:54 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 11-07-2016 a las 14:51:48
+-- Versión del servidor: 5.6.17
+-- Versión de PHP: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `soporte`
+-- Base de datos: `soporte`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departamentos`
+-- Estructura de tabla para la tabla `departamentos`
 --
 
 CREATE TABLE IF NOT EXISTS `departamentos` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `departamentos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `departamentos`
+-- Volcado de datos para la tabla `departamentos`
 --
 
 INSERT INTO `departamentos` (`id`, `id_departamento`, `descripcion`) VALUES
@@ -56,7 +56,7 @@ INSERT INTO `departamentos` (`id`, `id_departamento`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `descripcion_solicitud`
+-- Estructura de tabla para la tabla `descripcion_solicitud`
 --
 
 CREATE TABLE IF NOT EXISTS `descripcion_solicitud` (
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `descripcion_solicitud` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `descripcion_solicitud`
+-- Volcado de datos para la tabla `descripcion_solicitud`
 --
 
 INSERT INTO `descripcion_solicitud` (`id`, `tipo_solicitud`, `descripcion_solicitud`) VALUES
@@ -80,7 +80,7 @@ INSERT INTO `descripcion_solicitud` (`id`, `tipo_solicitud`, `descripcion_solici
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estatus`
+-- Estructura de tabla para la tabla `estatus`
 --
 
 CREATE TABLE IF NOT EXISTS `estatus` (
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `estatus` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `estatus`
+-- Volcado de datos para la tabla `estatus`
 --
 
 INSERT INTO `estatus` (`id_estatus`, `descripcion_estatus`) VALUES
@@ -100,7 +100,7 @@ INSERT INTO `estatus` (`id_estatus`, `descripcion_estatus`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `solicitudes`
+-- Estructura de tabla para la tabla `solicitudes`
 --
 
 CREATE TABLE IF NOT EXISTS `solicitudes` (
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `solicitudes` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `solicitudes`
+-- Volcado de datos para la tabla `solicitudes`
 --
 
 INSERT INTO `solicitudes` (`id`, `tipo_solicitud`, `departamento`, `usuario`, `fecha`, `estatus`, `asignar_usuario`, `estatus_tecnologia`, `id_usuario`) VALUES
@@ -141,7 +141,27 @@ INSERT INTO `solicitudes` (`id`, `tipo_solicitud`, `departamento`, `usuario`, `f
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `tipo_usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `tipo_usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_usuario` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id`, `tipo_usuario`) VALUES
+(1, 'Usuario'),
+(2, 'Analista');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -154,33 +174,42 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `clave` varchar(255) NOT NULL,
   `telefono` varchar(15) NOT NULL,
   `direccion` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_tipo` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_tipo` (`id_tipo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `login`, `nombres`, `apellidos`, `cedula`, `cod_dep`, `clave`, `telefono`, `direccion`) VALUES
-(1, 'admin', 'ADMINISTRADOR', '', 0, '0', '21232f297a57a5a743894a0e4a801fc3', '', ''),
-(2, 'prueba', 'prueba', 'prueba', 17389814, '3', '202cb962ac59075b964b07152d234b70', '', ''),
-(3, 'soulip', 'WALTER WILFREDO', 'JIMENEZ JAIMES', 17389814, '2', '202cb962ac59075b964b07152d234b70', '', ''),
-(4, 'jayala', 'JUNIOR', 'AYALA', 19677879, '2', '202cb962ac59075b964b07152d234b70', '', ''),
-(5, 'user12', 'elessar', 'wer', 123467, '8', 'd9b1d7db4cd6e70935368a1efb10e377', '0212-4714490', 'montalban');
+INSERT INTO `usuarios` (`id`, `login`, `nombres`, `apellidos`, `cedula`, `cod_dep`, `clave`, `telefono`, `direccion`, `id_tipo`) VALUES
+(1, 'admin', 'ADMINISTRADOR', '', 0, '0', '21232f297a57a5a743894a0e4a801fc3', '', '', 1),
+(2, 'prueba', 'prueba', 'prueba', 17389814, '3', '202cb962ac59075b964b07152d234b70', '', '', 1),
+(3, 'soulip', 'WALTER WILFREDO', 'JIMENEZ JAIMES', 17389814, '2', '202cb962ac59075b964b07152d234b70', '', '', 1),
+(4, 'jayala', 'JUNIOR', 'AYALA', 19677879, '2', '202cb962ac59075b964b07152d234b70', '', '', 1),
+(5, 'elessar', 'Junior Alexis', 'Ayala Rivas', 18677970, '8', 'e10adc3949ba59abbe56e057f20f883e', '04142305606', 'Monalban III', 1),
+(6, 'YMCHIRINOS', 'user234', 'wer', 123467, '10', '7363a0d0604902af7b70b271a0b96480', '02124714490', 'montalban', 2);
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `solicitudes`
+-- Filtros para la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  ADD CONSTRAINT `solicitudes_ibfk_5` FOREIGN KEY (`asignar_usuario`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `solicitudes_ibfk_1` FOREIGN KEY (`tipo_solicitud`) REFERENCES `descripcion_solicitud` (`tipo_solicitud`),
   ADD CONSTRAINT `solicitudes_ibfk_2` FOREIGN KEY (`departamento`) REFERENCES `departamentos` (`id_departamento`),
   ADD CONSTRAINT `solicitudes_ibfk_3` FOREIGN KEY (`estatus`) REFERENCES `estatus` (`id_estatus`),
-  ADD CONSTRAINT `solicitudes_ibfk_4` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `solicitudes_ibfk_4` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `solicitudes_ibfk_5` FOREIGN KEY (`asignar_usuario`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_usuario` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
