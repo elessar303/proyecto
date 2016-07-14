@@ -25,7 +25,7 @@ $clave=  md5($clave);
     $consult=$conn_pdval->consulta($sql);
     $nrows=$conn_pdval->num_rows($consult);
     if($nrows>0){
-       $sql="select login, nombres, cod_dep, id from usuarios where login='".$nombre."' and clave='".$clave."'"; 
+       $sql="select login, nombres, cod_dep, id, id_tipo from usuarios where login='".$nombre."' and clave='".$clave."'"; 
         $consult=$conn_pdval->Consulta($sql);
     $nrows=$conn_pdval->num_rows($consult);
     if($nrows>0){
@@ -35,6 +35,7 @@ $clave=  md5($clave);
         $_SESSION['nombre']=$arre['nombres'];
         $_SESSION['departamento']=$arre['cod_dep'];
        $_SESSION['id']=$arre['id'];
+       $_SESSION['tipo_usuario']=$arre['id_tipo'];
         header("Location:empezar.php");
     }else{
         $mensaje="Error, Clave Incorrecta";

@@ -37,9 +37,13 @@ $sql="SELECT * FROM estatus";
 $estatus=$filtros->consulta($sql);
 
 $sql="SELECT * FROM usuarios";
+
 $usuarios=$filtros->consulta($sql);
 
-$sql="SELECT * FROM usuarios WHERE cod_dep=2 or cod_dep=0";
+$sql="SELECT * FROM usuarios WHERE id_tipo=2";
+if($_SESSION['tipo_usuario']>0){
+    $sql.=" and id=".$_SESSION['id']."";
+}
 $analistas=$filtros->consulta($sql);
 ?>
 <form action='reportes.php' method='GET'>
@@ -114,7 +118,7 @@ $analistas=$filtros->consulta($sql);
     <?php
    }else{
        ?>
-     <tr><th>Departamento</th><th>Tipo de Soporte</th><th>Estatus</th><th>Solicitante</th><th>Asignado</th><th>Operacion</th><th>Imprimir</th></tr>
+     <tr><th>Departamento</th><th>Tipo de Soporte</th><th>Estatus</th><th>Solicitante</th><th>Asignado</th><th>Imprimir</th></tr>
      <?php
    }
    ?>
@@ -143,6 +147,9 @@ descripcion_solicitud as d
 where a.tipo_solicitud=d.tipo_solicitud
 and a.departamento=b.id_departamento
 and a.estatus=c.id_estatus";
+if($_SESSION['tipo_usuario']>0){
+    $sql2.=" and a.asignar_usuario=".$_SESSION['id']."";
+}
 
 if($_GET['departamento']!='x999')
 {
@@ -169,6 +176,7 @@ if($_GET['analista']!='x999')
     $sql2.=" and a.asignar_usuario=".$_GET['analista']."";
 }
 
+echo $sql2;
 $consulta=$estatus->consulta($sql2);
 
 $contar=0;
@@ -231,9 +239,7 @@ if($fila['asignar_usuario']==0){
                     . ""
                     . "<td>".$usuario_asign."</td>
 
-                    <td><input type='hidden' name=id_solicitud id=id_solicitud value='".$fila['id']."'><button id=actuar nombre=actuar value=".$fila['id']." onclick='modificar(this.value)'>MODIFICAR</button>
-
-                    </td>
+                    
                     <td>
                     ";
                     if($fila['asignar_usuario']!=0){

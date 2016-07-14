@@ -18,7 +18,7 @@ function modificar(valor2){
     <?php
    }else{
        ?>
-     <tr><th>Departamento</th><th>Tipo de Soporte</th><th>Estatus</th><th>Solicitante</th><th>Asignado</th><th>Operacion</th><th>Imprimir</th></tr>
+     <tr><th>Departamento</th><th>Tipo de Soporte</th><th>Estatus</th><th>Solicitante</th><th>Asignado</th><th>Imprimir</th></tr>
      <?php
    }
    ?>
@@ -39,12 +39,16 @@ function modificar(valor2){
 <tbody>
 <?php
 $estatus=new MySQL();//"select * from solicitudes as a, departamentos as b, usuarios as c,descripcion_solicitud as d where a.tipo_solicitud=d.tipo_solicitud and a.departamento=b.id_departamento "
-$consulta=$estatus->consulta("select a.id,b.descripcion, d.descripcion_solicitud, a.estatus, a.usuario, a.asignar_usuario
+$sql="select a.id,b.descripcion, d.descripcion_solicitud, a.estatus, a.usuario, a.asignar_usuario
 from solicitudes as a,
 departamentos as b,
 descripcion_solicitud as d
 where a.tipo_solicitud=d.tipo_solicitud
-and a.departamento=b.id_departamento");
+and a.departamento=b.id_departamento";
+if($_SESSION['tipo_usuario']>0){
+    $sql.=" and a.asignar_usuario=".$_SESSION['id']."";
+}
+$consulta=$estatus->consulta($sql);
 
 $contar=0;
 if($_SESSION['departamento']>5){
@@ -106,9 +110,7 @@ if($fila['asignar_usuario']==0){
                     . ""
                     . "<td>".$usuario_asign."</td>
 
-                    <td><input type='hidden' name=id_solicitud id=id_solicitud value='".$fila['id']."'><button id=actuar nombre=actuar value=".$fila['id']." onclick='modificar(this.value)'>MODIFICAR</button>
-
-                    </td>
+                    
                     <td>
                     ";
                     if($fila['asignar_usuario']!=0){

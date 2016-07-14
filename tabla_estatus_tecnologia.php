@@ -98,7 +98,7 @@ if($fila['asignar_usuario']==0){
                     if($contar%2==0)
             echo"            <tr>";else echo"<tr class='alt'>";
             echo"
-<td  >".utf8_encode($fila['descripcion'])."</td><td>".$fila['descripcion_solicitud']."</td><td>".$estatus1."</td><td>".$fila['usuario']."</td><td>".$usuario_asign."</td><td id='".$fila['id']."'><select size='1' name=".$fila['id']." id=".$fila['id']."><option value='0' ";if($tecn!="1" && $tecn!="2"){echo "selected";}echo ">Sin Asignar</option><option value='1' ";if($tecn=="1"){echo "selected";} echo ">EN PROCESO</option><option value='2' ";if($tecn=="2"){echo "selected";}echo">TERMINADO</option></select></td><td class='texto1'><input type='hidden' name=id_solicitud id=id_solicitud value='".$fila['id']."'><button id=actuar nombre=actuar value=".$fila['id']." onclick='modificar(this.value)'>MODIFICAR</button></td></tr>
+<td>".utf8_encode($fila['descripcion'])."</td><td>".$fila['descripcion_solicitud']."</td><td>".$estatus1."</td><td>".$fila['usuario']."</td><td>".$usuario_asign."</td><td id='".$fila['id']."'><select size='1' name=".$fila['id']." id=".$fila['id']."><option value='0' ";if($tecn!="1" && $tecn!="2"){echo "selected";}echo ">Sin Asignar</option><option value='1' ";if($tecn=="1"){echo "selected";} echo ">EN PROCESO</option>"; if($fila['estatus_usuario']>0){ echo "<option value='2' ";if($tecn=="2"){echo "selected";}echo">TERMINADO</option>";}echo "</select></td><td class='texto1'><input type='hidden' name=id_solicitud id=id_solicitud value='".$fila['id']."'><button id=actuar nombre=actuar value=".$fila['id']." onclick='modificar(this.value)'>MODIFICAR</button></td></tr>
                  ";       
                         
 $contar++;} 
@@ -135,7 +135,7 @@ if($fila['estatus_tecnologia']==1){
 
 
 if($fila['asignar_usuario']==0){
-     $query=$estatus->consulta("select id, nombres, apellidos from usuarios where cod_dep in ('0','2') ");
+     $query=$estatus->consulta("select id, nombres, apellidos from usuarios where id_tipo=2");
     $usuario_asign="<select name='resp_asig' id='resp_asig' size=1 onChange='Carga(this.value)';><option value=''>Seleccione...</option>";
     while($asig=$estatus->fetch_array($query)){
         $usuario_asign.="<option value='".$asig['id']."'>".$asig['nombres']." ".$asig['apellidos']."</option>";
