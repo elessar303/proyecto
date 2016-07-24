@@ -8,13 +8,6 @@
 
 
 function validacion() {
-    valor = document.getElementById("solicitud").selectedIndex;
-
-        if (valor==0 || valor>3) {
-    // Si no se cumple la condicion...
-    alert('[ERROR] El campo Tipo Solicitud debe tener un valor Valido...');
-    return false;
-  }
    valor1 = document.getElementById("estatus_solicitud").selectedIndex;
     if (valor1==0 || valor1>2) {
     // Si no se cumple la condicion...

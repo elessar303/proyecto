@@ -4,7 +4,7 @@
 								<li>
 									<a href="">Soporte</a>
 									<ul>
-										<?php if($_SESSION['departamento']>=6 || $_SESSION['departamento']==0){
+										<?php if( $_SESSION['tipo_usuario']!=2){
                                                                     ?>
 										<li><a href="solicitud.php">Registrar Solicitud</a></li>
 										<?php } ?>

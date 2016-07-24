@@ -28,20 +28,15 @@ session_start();
                                                         include 'menu.php';
                                                     }
                                                     ?>
-					<!-- Nav -->
-					
+					<!-- Nav -->											
                                                 </div>
 
 					<!-- Banner -->
 						<div id="banner">
-							<div class="container">
-								<section>
-									<header class="major" >
-										
-                                                                              
-									</header>
-									
-								</section>			
+							<div>
+							<?php
+							include "mis_solicitudes.php";
+                            ?>
 							</div>
 						</div>
 
