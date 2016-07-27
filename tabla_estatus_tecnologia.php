@@ -49,7 +49,7 @@ function modificar(valor2){
 $estatus=new MySQL();
 if($_SESSION['departamento']!=0){
 //"select * from solicitudes as a, departamentos as b, usuarios as c,descripcion_solicitud as d where a.tipo_solicitud=d.tipo_solicitud and a.departamento=b.id_departamento "
-$consulta=$estatus->consulta("select a.id,b.descripcion, d.descripcion_solicitud, a.estatus, a.usuario, a.asignar_usuario,estatus_tecnologia
+$consulta=$estatus->consulta("select a.id,b.descripcion, d.descripcion_solicitud, a.estatus, a.usuario, a.asignar_usuario,estatus_tecnologia, a.califica
 from solicitudes as a, 
 departamentos as b,
 descripcion_solicitud as d 
@@ -98,7 +98,7 @@ if($fila['asignar_usuario']==0){
                     if($contar%2==0)
             echo"            <tr>";else echo"<tr class='alt'>";
             echo"
-<td>".utf8_encode($fila['descripcion'])."</td><td>".$fila['descripcion_solicitud']."</td><td>".$estatus1."</td><td>".$fila['usuario']."</td><td>".$usuario_asign."</td><td id='".$fila['id']."'><select size='1' name=".$fila['id']." id=".$fila['id']."><option value='0' ";if($tecn!="1" && $tecn!="2"){echo "selected";}echo ">Sin Asignar</option><option value='1' ";if($tecn=="1"){echo "selected";} echo ">EN PROCESO</option>"; if($fila['estatus_usuario']>0){ echo "<option value='2' ";if($tecn=="2"){echo "selected";}echo">TERMINADO</option>";}echo "</select></td><td class='texto1'><input type='hidden' name=id_solicitud id=id_solicitud value='".$fila['id']."'><button id=actuar nombre=actuar value=".$fila['id']." onclick='modificar(this.value)'>MODIFICAR</button></td></tr>
+<td>".utf8_encode($fila['descripcion'])."</td><td>".$fila['descripcion_solicitud']."</td><td>".$estatus1."</td><td>".$fila['usuario']."</td><td>".$usuario_asign."</td><td id='".$fila['id']."'><select size='1' name=".$fila['id']." id=".$fila['id']."><option value='0' ";if($tecn!="1" && $tecn!="2"){echo "selected";}echo ">Sin Asignar</option><option value='1' ";if($tecn=="1"){echo "selected";} echo ">EN PROCESO</option>"; if($fila['califica']>0){ echo "<option value='2' ";if($tecn=="2"){echo "selected";}echo">TERMINADO</option>";}echo "</select></td><td class='texto1'><input type='hidden' name=id_solicitud id=id_solicitud value='".$fila['id']."'>";if($fila['estatus_tecnologia']!=2){echo "<button id=actuar nombre=actuar value=".$fila['id']." onclick='modificar(this.value)'>MODIFICAR</button>";}echo "</td></tr>
                  ";       
                         
 $contar++;} 

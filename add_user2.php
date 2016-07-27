@@ -160,7 +160,7 @@ $consulta=$estatus->consulta("select a.id, a.login, a.clave, a.nombres, a.apelli
                             <h4>Confirmar Clave<input name="reclave" type="password" id="reclave" value="<?php echo utf8_encode($fila['clave']); ?>" placeholder="REPITA CLAVE"  title='REPITA CLAVE' style="display: inline-block; text-align:center; width: 190px;"/></h4>
                 </div>
                 <div>
-                        <h4>Departamento
+                        <h4>Tipo Usuario
                           <select name=id_tipo id=id_tipo size=1 ;'>"<?php
                           $consulta_dep2=$conn->consulta("select * from tipo_usuario");
                    // $arreglo_dep=$conn->fetch_array($consulta_dep);

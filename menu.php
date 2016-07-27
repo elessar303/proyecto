@@ -3,10 +3,12 @@
                                                    <li><a href="empezar.php">Inicio</a></li>
 								<li>
 									<a href="">Soporte</a>
-									<ul>
+									
 										<?php if( $_SESSION['tipo_usuario']!=2){
                                                                     ?>
+                                        <ul>
 										<li><a href="solicitud.php">Registrar Solicitud</a></li>
+										</ul>
 										<?php } ?>
 										
 <!--										<li>
@@ -18,9 +20,9 @@
 												<li><a href="#">Etiam dolore nisl</a></li>
 												<li><a href="#">Veroeros feugiat</a></li>
 											</ul>
-										</li>-->
-										<li><a href="estatus_solicitud.php">Verificar Estatus de Solicitud</a></li>
-									</ul>
+										</li>
+										<li><a href="estatus_solicitud.php">Verificar Estatus de Solicitud</a></li>-->
+									
 								</li>    <?php if($_SESSION['departamento']<=5){
                                                                     ?>
 								<li><a href="estatus_solicitud.php">Asignaciones</a></li>

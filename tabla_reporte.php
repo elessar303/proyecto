@@ -37,11 +37,13 @@ $sql="SELECT * FROM estatus";
 $estatus=$filtros->consulta($sql);
 
 $sql="SELECT * FROM usuarios";
-
+if($_SESSION['tipo_usuario']>0){
+    $sql.=" where id=".$_SESSION['id']."";
+}
 $usuarios=$filtros->consulta($sql);
 
 $sql="SELECT * FROM usuarios WHERE id_tipo=2";
-if($_SESSION['tipo_usuario']>0){
+if($_SESSION['tipo_usuario']==2){
     $sql.=" and id=".$_SESSION['id']."";
 }
 $analistas=$filtros->consulta($sql);
@@ -148,7 +150,7 @@ where a.tipo_solicitud=d.tipo_solicitud
 and a.departamento=b.id_departamento
 and a.estatus=c.id_estatus";
 if($_SESSION['tipo_usuario']>0){
-    $sql2.=" and a.asignar_usuario=".$_SESSION['id']."";
+    $sql2.=" and a.id_usuario=".$_SESSION['id']."";
 }
 
 if($_GET['departamento']!='x999')
@@ -176,7 +178,7 @@ if($_GET['analista']!='x999')
     $sql2.=" and a.asignar_usuario=".$_GET['analista']."";
 }
 
-echo $sql2;
+//echo $sql2;
 $consulta=$estatus->consulta($sql2);
 
 $contar=0;
