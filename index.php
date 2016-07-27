@@ -25,7 +25,7 @@ $clave=  md5($clave);
     $consult=$conn_pdval->consulta($sql);
     $nrows=$conn_pdval->num_rows($consult);
     if($nrows>0){
-       $sql="select login, nombres, cod_dep, id, id_tipo from usuarios where login='".$nombre."' and clave='".$clave."'"; 
+       $sql="select login, nombres, apellidos, cod_dep, a.id, id_tipo, descripcion from usuarios a, departamentos where login='".$nombre."' and clave='".$clave."' and cod_dep=id_departamento"; 
         $consult=$conn_pdval->Consulta($sql);
     $nrows=$conn_pdval->num_rows($consult);
     if($nrows>0){
@@ -33,7 +33,9 @@ $clave=  md5($clave);
         $arre=$conn_pdval->fetch_array($consult);
          $_SESSION['login1']=$arre['login'];
         $_SESSION['nombre']=$arre['nombres'];
+        $_SESSION['apellidos']=$arre['apellidos'];
         $_SESSION['departamento']=$arre['cod_dep'];
+        $_SESSION['nombre_dep']=$arre['descripcion'];
        $_SESSION['id']=$arre['id'];
        $_SESSION['tipo_usuario']=$arre['id_tipo'];
         header("Location:empezar.php");

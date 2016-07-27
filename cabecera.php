@@ -15,3 +15,6 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
+	<?php if(!empty($_SESSION['nombre'])){?>
+	<h1 style="color:white;">Usuario: <?php echo $_SESSION['nombre']." ".$_SESSION['apellidos'] ?> - Departamento: <?php echo $_SESSION['nombre_dep']?></h1>
+	<?php } ?>
