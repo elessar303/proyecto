@@ -1,11 +1,12 @@
 <nav id="nav">
 							<ul>
-                                                   <li><a href="empezar.php">Inicio</a></li>
+                                                   <li class="active"><a href="empezar.php">Inicio</a></li>
 								<li>
-									<a href="">Soporte</a>
+									
 									
 										<?php if( $_SESSION['tipo_usuario']!=2){
                                                                     ?>
+                                        <a href="">Soporte</a>
                                         <ul>
 										<li><a href="solicitud.php">Registrar Solicitud</a></li>
 										</ul>
@@ -44,4 +45,4 @@
                                                                         <?php } ?> 
                                                                 <li><a href="cerrar.php">Cerrar Sesion</a></li>
                                                         </ul>
-						</nav>
+</nav>

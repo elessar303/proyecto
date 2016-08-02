@@ -341,7 +341,7 @@
 			text-align: center;
 			border-radius: 10px;
 			font-size: 2em;
-			color: white;
+			color:rgba(16, 32, 48, 0.25);
 		}
 
 		ul.list {
@@ -386,7 +386,7 @@
 
 			table.default thead {
 				background: #555555;
-				color: #fff;
+				color: rgba(16, 32, 48, 0.25);
 			}
 
 /* Button */
@@ -408,7 +408,7 @@
 		background: #3ac984;
 		border-radius: 40px;
 		border: 0;
-		color: white;
+		color: rgba(16, 32, 48, 0.25);
 		cursor: pointer;
 		display: inline-block;
 		padding: 0.80em 2em;
@@ -471,9 +471,8 @@
 /* Header */
 
 	#header {
-		background: #333333 url("../images/pic01.jpg") no-repeat;
 		background-size: cover;
-		color: #fff;
+		color: white;
 		padding: 6em 0;
 		text-align: center;
 		background-position: 0% 65%;
@@ -487,7 +486,7 @@
 			top: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(16, 32, 48, 0.25);
+			background: white;
 		}
 
 		#header > * {
@@ -502,6 +501,7 @@
 
 	#logo {
 		font-size: 2em;
+		color: rgba(0, 0, 0, 0.7);;
 	}
 
 	#nav > ul {
@@ -516,7 +516,7 @@
 		}
 
 			#nav > ul > li a {
-				color: #FFF;
+				color: rgba(0, 0, 0, 0.7);;
 				text-decoration: none;
 				font-size: 1.2em;
 			}
@@ -526,7 +526,7 @@
 			}
 
 			#nav > ul > li:hover a {
-				color: #fff;
+				color:rgba(16, 32, 48, 0.25);
 			}
 
 			#nav > ul > li.active {
@@ -534,7 +534,7 @@
 			}
 
 				#nav > ul > li.active a {
-					color: white;
+					color: rgba(16, 32, 48, 0.25);
 				}
 
 			#nav > ul > li > ul {
@@ -547,7 +547,7 @@
 		margin-top: -2px;
 		background: #3ac984;
 		border-radius: 10px;
-		color: white;
+		color: rgba(16, 32, 48, 0.25);
 		min-width: 12em;
 		padding: 1em 0;
 	}
@@ -563,7 +563,7 @@
 			}
 
 			.dropotron > li.active > a, .dropotron > li:hover > a {
-				color: #FFF;
+				color: rgba(16, 32, 48, 0.25);
 			}
 
 		.dropotron.level-0 {
@@ -631,12 +631,12 @@
 
 	#footer {
 		padding: 4em 0;
-		color: #fff;
+		color: rgba(16, 32, 48, 0.25);
 	}
 
 		#footer .major h2 {
 			font-size: 2em;
-			color: #FFF;
+			color: rgba(16, 32, 48, 0.25);
 		}
 
 		#footer .major .byline {
