@@ -11,7 +11,7 @@ if (stristr($_SERVER['PHP_SELF'],'clase_db.inc.php')) {	//  evita que el script 
 
   public function MySQL(){
     if(!isset($this->conexion)){
-      $this->conexion = (mysqli_connect("localhost","root","root"))
+      $this->conexion = (mysqli_connect("localhost","root",""))
         or die(mysql_error());
 
       $db="soporte";

@@ -100,7 +100,7 @@ if($inser){
 				<div class="container">
 
 					<!-- Logo -->
-						<h1><a href="#" id="logo">PDVAL</a></h1>
+						<h1><a href="#" id="logo"></a></h1>
                                                 <div id="menu">
                                                     <?php
                                                     if($_SESSION['login']=!""){

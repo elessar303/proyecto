@@ -6,8 +6,8 @@
 
 					<!-- Copyright -->
 						<div class="copyright">
-							DISEÑO POR LISBETH GARRIDO.
-                                                        <BR> <IMG SRC="images/copy_left.png" width="60" ALT="Software libre" >
+					
+                                                        <BR> <IMG SRC="images/pie de pagina.jpg" width="60%" ALT="Software libre" >
 						</div>
 
 				</div>

@@ -17,6 +17,6 @@
 	</head>
 	<?php if(!empty($_SESSION['nombre'])){?>
 	<h1 style="color:white;">Usuario: <?php echo $_SESSION['nombre']." ".$_SESSION['apellidos'] ?> - Departamento: <?php echo $_SESSION['nombre_dep']?></h1>
-	<div style="background-color:white" onmouseover="this.bgColor='white'" width="100%" align="center"><img src="images/banner.png" alt="PDVAL"></div>
-	<div style="background-color:white" onmouseover="this.bgColor='white'" width="100%" align="center"><img src="images/line.png" width="100%"></div>
+	<div style="background-color:white" onmouseover="this.bgColor='white'" width="100%" align="center"><img src="images/encabezado de pag.png" width="75%">  </div>
+	
 	<?php } ?>

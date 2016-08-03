@@ -62,7 +62,7 @@ $clave=  md5($clave);
 				<div class="container">
 						
 					<!-- Logo -->
-						<h1><a href="#" id="logo">PDVAL</a></h1>
+						<h1><a href="#" id="logo"></a></h1>
                                                 <div id="menu"> 
 					<!-- Nav -->
 					
@@ -74,6 +74,8 @@ $clave=  md5($clave);
 								<section>
 									<header class="major" >
 										<h2><?php echo $mensaje;?></h2>
+        <div style="background-color:white" onmouseover="this.bgColor='white'" width="100%" align="center"><img src="images/logo gobierno.png" width="75%">  </div>                                
+        <div style="background-color:white" onmouseover="this.bgColor='white'" width="100%" align="center"><img src="images/logo usuario.png" width="35%">  </div>
                                                                                 <form action='index.php' method="post">
                                                                                     <table border="1" align="center">
                                                                                         <tr> 
@@ -93,7 +95,7 @@ $clave=  md5($clave);
                                                                                             </td>
                                                                                         </tr>
                                                                                     </table>
-                                                                                    <button type="submit" class="button alt">Sign Up</button>
+                                                                                    <button type="submit" class="button alt">ENTRAR</button>
                                                                                 </form>
 									</header>
 									
