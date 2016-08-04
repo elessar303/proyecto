@@ -55,29 +55,24 @@ $clave=  md5($clave);
     include 'cabecera.php';
     ?>
 	
-	<body class="homepage">
+	<body bgcolor="white">
+			<div style="background-color:white;">
 
-		<!-- Header -->
-			<div id="header">
-				<div class="container">
-						
-					<!-- Logo -->
-						<h1><a href="#" id="logo"></a></h1>
-                                                <div id="menu"> 
-					<!-- Nav -->
-					
-                                                </div>
 
-					<!-- Banner -->
-						<div id="banner">
-							<div class="container">
-								<section>
-									<header class="major" >
-										<h2><?php echo $mensaje;?></h2>
-        <div style="background-color:white" onmouseover="this.bgColor='white'" width="100%" align="center"><img src="images/logo gobierno.png" width="75%">  </div>                                
-        <div style="background-color:white" onmouseover="this.bgColor='white'" width="100%" align="center"><img src="images/logo usuario.png" width="35%">  </div>
-                                                                                <form action='index.php' method="post">
-                                                                                    <table border="1" align="center">
+										
+        <center><img src="images/logogobierno.png" align="center"></center>
+        <div style="background-color:white;background: url(images/logousuario.png) no-repeat;background-position:center;width:1024px;height:700px;margin:0 auto;" align="center"><form action='index.php' method="post">
+                                                                                    <table>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <br>
                                                                                         <tr> 
                                                                                             <td align="center">USUARIO:</td>
                                                                                         </tr>
@@ -96,14 +91,12 @@ $clave=  md5($clave);
                                                                                         </tr>
                                                                                     </table>
                                                                                     <button type="submit" class="button alt">ENTRAR</button>
-                                                                                </form>
-									</header>
-									
-								</section>			
-							</div>
-						</div>
+                                                                                </form>  </div>
+                                                                                
 
-				</div>
+									
+	
+
 			</div>
 
 		<!-- Featured -->
