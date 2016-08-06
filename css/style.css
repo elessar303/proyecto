@@ -630,13 +630,12 @@
 /* Footer */
 
 	#footer {
-		padding: 4em 0;
-		color: rgba(16, 32, 48, 0.25);
+		color: white;
 	}
 
 		#footer .major h2 {
 			font-size: 2em;
-			color: rgba(16, 32, 48, 0.25);
+			color: whiet;
 		}
 
 		#footer .major .byline {
@@ -644,12 +643,11 @@
 		}
 
 		#footer .copyright {
-			margin-top: 3em;
-			padding-top: 3em;
 			border-top: 1px solid;
-			border-color: rgba(192, 192, 192, 0.15);
+			border-color: white;
 			text-align: center;
 			color: white;
+			background: white;
 		}
 
 		#footer a {

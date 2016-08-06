@@ -15,7 +15,9 @@ if(!empty($_POST['login']) && !empty($_POST['nombre']) && !empty($_POST['apellid
    
     include '/include/clase_db_init.php';
   $conn=new MySQL();
-  $inser=$conn->consulta("UPDATE `usuarios` SET `login`='$login',`clave`='$clave',`nombres`='$nombre',`apellidos`='$apellidos',`cedula`='$cedula',`cod_dep`=$cod_dep, telefono='$tlfn', direccion='$direccion', id_tipo=$id_tipo WHERE id=$id");
+  $sql="UPDATE `usuarios` SET `login`='$login',`clave`='$clave',`nombres`='$nombre',`apellidos`='$apellidos',`cedula`='$cedula',`cod_dep`=$cod_dep, telefono='$tlfn', direccion='$direccion', id_tipo=$id_tipo WHERE id=$id";
+  echo $sql; 
+  $inser=$conn->consulta($sql);
    if($inser){
        
       echo $resultado=1;

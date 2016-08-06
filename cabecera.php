@@ -19,4 +19,6 @@
 	<h1 style="color:white;">Usuario: <?php echo $_SESSION['nombre']." ".$_SESSION['apellidos'] ?> - Departamento: <?php echo $_SESSION['nombre_dep']?></h1>
 	<div style="background-color:white" onmouseover="this.bgColor='white'" align="center"><img src="images/encabezado de pag.png">  </div>
 	
-	<?php } ?>
+	<?php 
+error_reporting(-1);
+	} ?>
