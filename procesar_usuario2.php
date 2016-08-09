@@ -25,7 +25,7 @@ if (stristr($_SERVER['PHP_SELF'],'clase_db.inc.php')) {	//  evita que el script 
    //echo "insert into solicitudes(tipo_solicitud,departamento,usuario,fecha,estatus)values  ('".$solicitud."','".$query1['cod_dep']."','".$query1['nombres']." ".$query1['apellidos']."',now(),'".$estatus."')";exit();
   // echo "insert into usuarios(login,nombres,apellidos,cedula,cod_dep,clave)values "
       //     . " ('".$_POST['login']."','".$_POST['nombre']."','".$_POST['apellido']." ".$_POST['cedula']."','".$_POST['departamento']."','".md5($_POST['clave'])."')";
-    $sql="UPDATE usuarios SET login='".$_POST['login']."',nombres='".$_POST['nombre']."',apellidos='".$_POST['apellido']."',cedula=".$_POST['cedula'].",cod_dep='".$_POST['departamento']."',clave='".$_POST['clave']."',telefono='".$_POST['tlfn']."',direccion='".$_POST['direccion']."',id_tipo='".$_POST['tipo_usuario']."' WHERE id=".$_POST['id']."";
+    $sql="UPDATE usuarios SET login='".$_POST['login']."',nombres='".$_POST['nombre']."',apellidos='".$_POST['apellido']."',cedula=".$_POST['cedula'].",cod_dep='".$_POST['departamento']."',clave='".md5($_POST['clave'])."',telefono='".$_POST['tlfn']."',direccion='".$_POST['direccion']."',id_tipo='".$_POST['tipo_usuario']."' WHERE id=".$_POST['id']."";
     //echo $sql; exit();
     $inser=$conn->consulta($sql);
 
@@ -41,10 +41,6 @@ if($inser){
         . "alert('Error Al Modificar el Usuario, consulte al administrador');"
               . "document.location.href='registrar.php';"
             ."</script>";
-
-
-
-
 }
 
 ?>
